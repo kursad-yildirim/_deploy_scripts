@@ -51,4 +51,4 @@ $CONTAINER build $APPDIR/code.dev -t db-crud-$APP_NAME:$TAG >/dev/null 2>&1
 $CONTAINER ps -a | grep db-crud-$APP_NAME | awk '{print $1}'| xargs podman stop
 $CONTAINER ps -a | grep db-crud-$APP_NAME | awk '{print $1}'| xargs podman rm
 
-$CONTAINER run --name db-crud-$APP_NAME-$TAG -d db-crud-$DB_NAME:$TAG
+$CONTAINER run --name db-crud-$APP_NAME-$TAG -d db-crud-$APP_NAME:$TAG
