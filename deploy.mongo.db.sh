@@ -1,8 +1,8 @@
 #!/bin/bash
 if [ $# -eq 2 ]
   then
-    DB_SERVER=$3
-    DB_PORT=$4
+    DB_NAME=$1
+    DB_PORT=$2
   else
     echo 'Too few parameters.'
     echo 'usage: deploy.mongo.db.sh db_server db_port'
