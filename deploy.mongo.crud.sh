@@ -4,12 +4,12 @@ if [ $# -eq 6 ]
     APP_NAME=$1
     API_PORT=$2
     DB_SERVER=$3
-    DB_NAME=$4
-    DB_REQUIRED=$5
-    TAG=$6
+    DB_PORT=$4
+    DB_NAME=$5
+    DB_REQUIRED=$6
   else
     echo 'Too few parameters.'
-    echo 'usage: deploy.db.access.sh app_name api_port db_server db_name db_required api-version'
+    echo 'usage: deploy.mongo.crud.sh app_name api_port db_server db_port db_name db_required'
     exit
 fi
 TAG=$(git log | grep 8Mega | awk -F "_" '{print $4}')
@@ -17,7 +17,7 @@ CONTAINER='/usr/bin/podman'
 WORKDIR='/home/workspace'
 APPDIR=$WORKDIR/node.js/crud/$DB_NAME
 TEMPLATEDIR=$WORKDIR/node.js/crud/node-js-crud-mongodb
-DB_IP=$(podman ps | grep "$DB_NAME-mongo-db" | awk '{print $1}'| xargs podman inspect| grep IPAddress|awk '{print $2}'| awk -F "\"" '{print $2}')
+DB_IP=$(podman ps | grep "db-mongodb-$DB_NAME" | awk '{print $1}'| xargs podman inspect| grep IPAddress|awk '{print $2}'| awk -F "\"" '{print $2}')
 
 mkdir -p $APPDIR
 cp -R $TEMPLATEDIR/* $APPDIR/
@@ -29,6 +29,7 @@ WORKDIR /usr/src/app
 ENV APP_NAME=$APP_NAME
 ENV API_PORT=$API_PORT
 ENV DB_SERVER=$DB_SERVER
+ENV DB_PORT=$DB_PORT
 ENV DB_IP=$DB_IP
 ENV DB_NAME=$DB_NAME
 ENV DB_REQUIRED=$DB_REQUIRED
