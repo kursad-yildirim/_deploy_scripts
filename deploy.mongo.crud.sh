@@ -9,7 +9,7 @@ if [ $# -eq 6 ]
     DB_REQUIRED=$6
   else
     echo 'Too few parameters.'
-    echo 'usage: deploy.mongo.crud.sh app_name api_port db_server db_port db_name db_required'
+    echo 'USAGE: deploy.mongo.crud.sh app_name api_port db_server db_port db_name db_required'
     exit
 fi
 TAG=$(git log | grep 8Mega | awk -F "_" '{print $4}')
