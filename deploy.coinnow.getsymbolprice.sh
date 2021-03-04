@@ -14,7 +14,7 @@ CONTAINER='/usr/bin/podman'
 WORKDIR='/home/workspace'
 APPDIR=$WORKDIR/node.js/coinnow/$APP_NAME
 DB_REST_IP=$(podman ps | grep "db-crud-$APP_NAME" | awk '{print $1}'| xargs podman inspect| grep IPAddress|awk '{print $2}'| awk -F "\"" '{print $2}')
-DB_REST_PORT=$(podman ps | grep "db-crud-$APP_NAME" | awk '{print $1}'| xargs podman inspect| grep API_PORT|awk -F "=" '{print $2}'|awk -F "\"" '{print $1}'
+DB_REST_PORT=$(podman ps | grep "db-crud-$APP_NAME" | awk '{print $1}'| xargs podman inspect| grep API_PORT|awk -F "=" '{print $2}'|awk -F "\"" '{print $1}')
 
 cat > $APPDIR/code.dev/Dockerfile << EOLDOCKERFILE
 FROM node:lts-alpine3.13
