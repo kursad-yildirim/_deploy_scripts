@@ -12,6 +12,7 @@ if [ $# -eq 6 ]
     echo 'usage: deploy.db.access.sh app_name api_port db_server db_name db_required api-version'
     exit
 fi
+TAG=$(git log | grep 8Mega | awk -F "_" '{print $4}')
 CONTAINER='/usr/bin/podman'
 WORKDIR='/home/workspace'
 APPDIR=$WORKDIR/node.js/crud/$DB_NAME
