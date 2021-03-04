@@ -9,7 +9,7 @@ if [ $# -eq 6 ]
     TAG=$6
   else
     echo 'Too few parameters.'
-    echo 'usage: deploy.sh app_name api_port db_server db_name db_required api-version'
+    echo 'usage: deploy.db.access.sh app_name api_port db_server db_name db_required api-version'
     exit
 fi
 CONTAINER='/usr/bin/podman'
