@@ -16,11 +16,12 @@ TAG=$(git log | grep 8Mega | awk -F "_" '{print $4}')
 CONTAINER='/usr/bin/podman'
 WORKDIR='/home/workspace'
 APPDIR=$WORKDIR/node.js/crud/$DB_NAME
-TEMPLATEDIR=$WORKDIR/node.js/crud/node-js-crud-mongodb
+TEMPLATEDIR=$WORKDIR/node.js/crud/nodejs-crud-mongodb
 DB_IP=$(podman ps | grep "db-mongodb-$DB_NAME" | awk '{print $1}'| xargs podman inspect| grep IPAddress|awk '{print $2}'| awk -F "\"" '{print $2}')
 
 mkdir -p $APPDIR
 cp -R $TEMPLATEDIR/* $APPDIR/
+
 cat > $APPDIR/code.dev/Dockerfile << EOLDOCKERFILE
 FROM node:lts-alpine3.13
 
