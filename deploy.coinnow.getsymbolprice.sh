@@ -41,4 +41,4 @@ $CONTAINER build $APPDIR/code.dev -t coinnow-$APP_NAME:$TAG >/dev/null 2>&1
 $CONTAINER ps -a | grep coinnow-$APP_NAME | awk '{print $1}'| xargs podman stop
 $CONTAINER ps -a | grep coinnow-$APP_NAME | awk '{print $1}'| xargs podman rm
 
-$CONTAINER run --name coinnow-$APP_NAME-$TAG -d db-crud-$APP_NAME:$TAG
+$CONTAINER run --name coinnow-$APP_NAME-$TAG -d coinnow-$APP_NAME:$TAG
